@@ -31,4 +31,11 @@ class Springpractice1ApplicationTests {
 
         assertThat(id).isGreaterThan(0L);
     }
+
+    @Test
+    @DisplayName("게시물 단건 조회")
+    void readOne() {
+        Article queryResult = articleService.getArticle(1L);
+        assertThat(queryResult.getSubject()).isEqualTo("제목1");
+    }
 }

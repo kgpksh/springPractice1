@@ -19,6 +19,15 @@ public interface ArticleRepository {
 
     @Select("""
                 <script>
+                    SELECT *
+                    FROM article
+                    WHERE id = #{id}
+                </script>
+            """)
+    Article getArticle(long id);
+
+    @Select("""
+                <script>
                     INSERT INTO article
                     SET createDate = NOW(),
                     modifyDate = NOW(),

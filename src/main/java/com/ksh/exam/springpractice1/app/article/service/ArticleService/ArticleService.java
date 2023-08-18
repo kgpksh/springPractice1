@@ -15,6 +15,10 @@ public class ArticleService {
         return articleRepository.getArticles();
     }
 
+    public Article getArticle(long id) {
+        return articleRepository.getArticle(id);
+    }
+
     public long writeArticle(String subject, String content) {
         articleRepository.write(subject, content);
 
