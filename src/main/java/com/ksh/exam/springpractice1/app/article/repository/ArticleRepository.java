@@ -42,4 +42,33 @@ public interface ArticleRepository {
                 SELECT LAST_INSERT_ID()
             """)
     long getLastInsertId();
+
+    @Select("""
+                <script>
+                    SELECT A.*
+                    FROM article AS A
+                    WHERE 1
+                    <if test = "keyword != ''">
+                        <choose>
+                            <when test = "keywordType == 'subject'">
+                                AND A.subject LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+                            
+                            <when test = "keywordType == 'content'">
+                                AND A.content LIKE CONCAT('%', #{keyword}, '%')
+                            </when>
+                            
+                            <otherwise>
+                                AND (
+                                    A.subject LIKE CONCAT('%', #{keyword}, '%')
+                                    OR
+                                    A.content LIKE CONCAT('%', #{keyword}, '%')
+                                )
+                            </otherwise>
+                        </choose>
+                        
+                    </if>
+                </script>
+            """)
+    List<Article> searchByKeyword(String keywordType, String keyword);
 }

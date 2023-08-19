@@ -38,4 +38,14 @@ class Springpractice1ApplicationTests {
         Article queryResult = articleService.getArticle(1L);
         assertThat(queryResult.getSubject()).isEqualTo("제목1");
     }
+
+    @Test
+    @DisplayName("게시글 제목으로 조회")
+    void searchBySubject() {
+        List<Article> articles = articleService.searchByKeyword("subject", "1");
+        assertThat(articles.size()).isEqualTo(1);
+
+        articles = articleService.searchByKeyword("content", "내용");
+        assertThat(articles.size()).isEqualTo(1);
+    }
 }

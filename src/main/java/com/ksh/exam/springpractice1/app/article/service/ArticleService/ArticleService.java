@@ -24,4 +24,8 @@ public class ArticleService {
 
         return articleRepository.getLastInsertId();
     }
+
+    public List<Article> searchByKeyword(String keywordType, String keyword) {
+        return articleRepository.searchByKeyword(keywordType, keyword);
+    }
 }
