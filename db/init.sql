@@ -4,6 +4,7 @@ CREATE DATABASE practice1;
 
 USE practice1;
 
+# 게시물 데이터
 CREATE TABLE article (
                          id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
                          PRIMARY KEY(id),
@@ -15,6 +16,27 @@ CREATE TABLE article (
 
 INSERT INTO article
 SET createDate = NOW(),
-modifyDate = NOW(),
-`subject` = '제목1',
-`content` = '내용1';
+    modifyDate = NOW(),
+    `subject` = '제목1',
+    `content` = '내용1';
+
+
+# 회원 데이터
+CREATE TABLE `member` (
+                          id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+                          PRIMARY KEY(id),
+                          createDate DATETIME NOT NULL,
+                          modifyDate DATETIME NOT NULL,
+                          `username` CHAR(100) NOT NULL UNIQUE,
+                          `password` CHAR(100) NOT NULL,
+                          `name` CHAR(100) NOT NULL,
+                          email CHAR(100) NOT NULL
+);
+
+INSERT INTO `member`
+SET createDate = NOW(),
+    modifyDate = NOW(),
+    `username` = 'user1',
+    `password` = 'password1',
+    `name` = '유저1',
+    email = 'user1@test.com';
