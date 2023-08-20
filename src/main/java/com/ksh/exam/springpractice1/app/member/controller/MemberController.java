@@ -35,4 +35,11 @@ public class MemberController {
         session.setAttribute("loginedMemberId", member.getId());
         return "redirect:/?msg=" + Util.url.encode("로그인 성공");
     }
+
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.removeAttribute("loginedMemberId");
+
+        return "redirect:/?msg=" + Util.url.encode("로그아웃 성공");
+    }
 }
