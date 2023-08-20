@@ -8,7 +8,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 @Component
 @Slf4j
@@ -17,16 +16,7 @@ public class NeedToLoginInterceptor implements HandlerInterceptor {
     private final Rq rq;
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.debug("NeedToLoginInterceptor::preHandle 실행됨");
-        rq.increaseCount();
-        log.debug("rq : " + rq + ", rq.count : " + rq.getCount());
-
-        HttpSession session = request.getSession();
-        Long loginedMemberId = (Long) session.getAttribute("loginedMemberId");
-
-        boolean isLogin = loginedMemberId != null;
-
-        if (!isLogin) {
+        if (rq.isLogout()) {
             response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html; charset=UTF-8");
             response.getWriter().append("로그인 후 이용바랍니다");
