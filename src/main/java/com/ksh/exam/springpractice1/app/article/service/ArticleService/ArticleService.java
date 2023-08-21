@@ -28,4 +28,8 @@ public class ArticleService {
     public List<Article> searchByKeyword(String keywordType, String keyword) {
         return articleRepository.searchByKeyword(keywordType, keyword);
     }
+
+    public List<Article> getForPrintArticles() {
+        return articleRepository.getForPrintArticles();
+    }
 }

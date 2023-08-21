@@ -19,7 +19,7 @@ public class ArticleController {
     private final ArticleService articleService;
     @GetMapping("/list")
     public String showList(Model model) {
-        List<Article> articles = articleService.getArticles();
+        List<Article> articles = articleService.getForPrintArticles();
 
         log.debug("articles : " + articles);
         model.addAttribute("articles", articles);
