@@ -44,3 +44,11 @@ SET createDate = NOW(),
 # 게시물에 작성자 정보 추가
 ALTER TABLE article
 ADD COLUMN  member_id BIGINT UNSIGNED NOT NULL AFTER modifyDate;
+
+# 기존 게시물 작성자를 user2로 지정
+UPDATE article
+SET member_id = 2;
+
+# 게시물에 작성자 정보 camelCase로 변경
+ALTER TABLE article
+    CHANGE member_id memberId BIGINT UNSIGNED NOT NULL AFTER modifyDate;
