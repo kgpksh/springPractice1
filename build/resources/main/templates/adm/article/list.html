@@ -8,10 +8,13 @@
 
     <ul>
         <li th:each="article : ${articles}">
+            <input type="checkbox">
             <a th:href="@{|/article/${article.id}|}" th:text="${article.id}"></a>
             <a th:href="@{|/article/${article.id}|}" th:text="${article.subject}"></a>
             <a th:href="@{|/article/${article.id}|}" th:text="${article.extra_member_name}"></a>
         </li>
     </ul>
+
+    <button>선택삭제</button>
 </main>
 </html>

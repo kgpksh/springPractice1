@@ -3,6 +3,8 @@ package com.ksh.exam.springpractice1.app.member.dto;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Arrays;
+
 @Data
 @Builder
 public class Member {
@@ -11,8 +13,12 @@ public class Member {
     private String password;
     private String name;
     private String email;
+    private String roles;
 
     public boolean matchPassword(String password) {
         return this.password.equals(password);
+    }
+    public boolean hasRole(String role) {
+        return Arrays.stream(roles.split(", ")).anyMatch(role_ -> role_.equals(role));
     }
 }
