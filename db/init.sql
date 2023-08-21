@@ -40,3 +40,7 @@ SET createDate = NOW(),
     `password` = 'password1',
     `name` = '유저1',
     email = 'user1@test.com';
+
+# 게시물에 작성자 정보 추가
+ALTER TABLE article
+ADD COLUMN  member_id BIGINT UNSIGNED NOT NULL AFTER modifyDate;
