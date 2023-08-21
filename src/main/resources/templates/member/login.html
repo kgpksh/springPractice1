@@ -1,13 +1,22 @@
-<form method="POST">
-    <div>
-        username : <input type="text" name="username">
-    </div>
+<!DOCTYPE html>
+<html layout:decorate="~{/layout/layout}">
+<head>
+    <title>사이트A - 게시물 리스트</title>
+</head>
+<main layout:fragment="main">
+    <form method="POST">
+        <h1>로그인</h1>
+        <div>
+            username : <input type="text" name="username">
+        </div>
 
-    <div>
-        password : <input type="password" name="password">
-    </div>
+        <div>
+            password : <input type="password" name="password">
+        </div>
 
-    <div>
-        login : <input type="submit" value="로그인">
-    </div>
-</form>
+        <div>
+            login : <input type="submit" value="로그인">
+        </div>
+    </form>
+</main>
+</html>
