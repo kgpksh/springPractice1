@@ -23,6 +23,8 @@ public class Rq {
     @Getter
     @Setter
     private String name;
+    @Getter
+    private String alertMsg;
 
     public void increaseCount() {
         count++;
@@ -87,5 +89,10 @@ public class Rq {
         session.removeAttribute("loginedMemberName");
         session.removeAttribute("loginedMemberUsername");
         session.removeAttribute("loginedMemberEmail");
+    }
+
+    public String historyBackTemplate(String msg) {
+        alertMsg = msg;
+        return "common/js";
     }
 }
